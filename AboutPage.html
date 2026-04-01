@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* TOP HEADER */
+.top-bar {
+  /* Dark navy background with a subtle pattern overlay */
+  background: linear-gradient(rgba(26, 32, 44, 0.95), rgba(26, 32, 44, 0.95)),
+              url('https://www.transparenttextures.com/patterns/carbon-fibre.png'); 
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  height: 50px;
+}
+
+.top-bar-container {
+  max-width: 1400px;
+  margin: auto;
+  padding: 10 40px;
+  display: flex;
+  justify-content: center; /* Centers the contact info */
+  align-items: center;
+  position: relative;
+}
+
+/* CENTER CONTACT INFO */
+.top-contact {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-right: 900px;
+  
+
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.contact-link:hover {
+  opacity: 0.8;
+}
+
+.contact-link svg {
+  width: 16px;
+  height: 16px;
+  fill: #fff; /* Icons are white in the top bar */
+}
+
+/* THE VERTICAL DIVIDER | */
+.separator {
+  width: 1px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 0 5px;
+}
+
+/* RIGHT BUTTON LOGO */
+.top-right-btn {
+  position: absolute;
+  right: 40px;
+  width: 35px;
+  height: 35px;
+  background: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s;
+  margin-top: 15px;
+}
+
+.top-right-btn:hover {
+  transform: scale(1.05);
+}
+
+.top-right-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: #0091d1; /* The icon inside the button is blue */
+}
+
+  /* NAVBAR CONTAINER */
+  .navbar {
+    width: 100%;
+    background: #fff;
+    padding: 10px 0;
+    border-bottom: 1px solid #f8f8f8;
+    position: relative;
+    z-index: 1000;
+  }
+
+  .nav-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* LOGO SECTION */
+  .nav-left img {
+    height: 50px;
+    display: block;
+  }
+
+  /* MENU SECTION */
+  .menu {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Parent LI must be relative so dropdown aligns to it */
+  .menu > li {
+    position: relative;
+    padding: 15px 18px;
+  }
+
+  .menu a {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 15px;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+  }
+
+  .menu a.active {
+    color: #0091d1;
+  }
+
+  .menu a:hover {
+    color: #0091d1;
+  }
+
+  /* DROPDOWN ARROW */
+  .has-dropdown::after {
+    content: ' \2304';
+    font-size: 16px;
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: bold;
+    margin-bottom: 9px;
+  }
+
+  /* DROPDOWN MENU - Hidden by default */
+  .dropdown {
+    position: absolute;
+    top: 100%; /* Sits exactly below the parent li */
+    left: 0;
+    background: #ffffff;
+    min-width: 240px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 1px solid #eeeeee;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    transform: translateY(10px);
+  }
+
+  /* SHOW DROPDOWN ON HOVER */
+  .menu li:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* DROPDOWN ITEMS */
+  .dropdown li {
+    border-bottom: 1px solid #f1f1f1;
+  }
+
+  .dropdown li:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown a {
+    padding: 12px 20px;
+    color: #444;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+
+  .dropdown a:hover {
+    background: #f9f9f9;
+    color: #0091d1;
+  }
+  /*Aboyt us*/
+
+  .about-hero {
+  /* Replace 'your-image-path.jpg' with your actual image URL */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              url('About/why-choose-us.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 120px 0; /* Adjust height to match the image scale */
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+.about-hero .container {
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-hero h1 {
+  font-family: 'Arial', sans-serif; /* Use a bold sans-serif */
+  font-size: 40px;
+  font-weight: 800;
+  margin: 0;
+  text-align: left; /* Image shows left-aligned text */
+  letter-spacing: -1px;
+}
+/* OVERVIEW*/
+.overview {
+  padding: 80px 20px;
+  background-color: #fff;
+}
+
+.overview-wrapper {
+  display: flex;
+  align-items: flex-start; /* Aligns text to the top of the image */
+  gap: 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Image Container Styling */
+.overview-image {
+  flex: 1;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden; /* Ensures image and bar follow the radius */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.overview-image img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* The Blue "Olympia Tech Park" Bar */
+.image-caption-bar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: #34495e; /* Dark blue/slate color from image */
+  color: white;
+  text-align: center;
+  padding: 8px 0;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+/* Text Styling */
+.overview-text {
+  flex: 1.2;
+}
+
+.overview-text h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 25px;
+  font-family: 'Arial Black', sans-serif;
+}
+
+.overview-text p {
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+/* OUR CAPABILITIES */
+.capabilities {
+  padding: 80px 20px;
+  background: #f9f9f9; /* Light grey background from image */
+  text-align: center;
+}
+
+.capabilities h2 {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 34px;
+  font-weight: 900;
+  margin-bottom: 50px;
+  color: #000;
+}
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cap-card {
+  background: white;
+  border-radius: 6px; /* Subtle rounding as seen in image */
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  text-align: left; /* Left align text inside cards */
+  display: flex;
+  flex-direction: column;
+}
+
+.cap-card .card-image {
+  width: 100%;
+  height: 220px;
+}
+
+.cap-card .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cap-content {
+  padding: 25px;
+}
+
+.cap-card h3 {
+  font-family: 'Arial', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #000;
+}
+
+.cap-card p {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Link color for specific terms if needed */
+.cap-card p span {
+  color: #3498db;
+  cursor: pointer;
+}
+/* CORE VALUES */
+.core-values {
+  padding: 40px 20px;
+  background-color: #ffffff;
+
+}
+
+.values-wrapper {
+  display: flex;
+  align-items: center; /* Vertically centers the image and text */
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 60px;
+}
+
+/* Infographic Image Styling */
+.values-image {
+  flex: 1;
+  text-align: center;
+
+}
+
+.values-image img {
+  max-width: 480px;
+  height: 400px;
+  /* Use a subtle shadow and border-radius if the image is square 
+     to match the soft grey box in your reference */
+  border-radius: 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+}
+
+/* Text Content Styling */
+.values-text {
+  flex: 1.2;
+}
+
+.values-text h2 {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 48px; /* Large, impactful heading */
+  font-weight: 900;
+  color: #000;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.values-text p {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  text-align: justify; /* Matches the clean block-text look */
+}
+/* STATS SECTION */
+.stats-section {
+  padding: 30px 0;
+  background: #001f3f; /* Deep Navy Blue */
+  color: #ffffff;
+  text-align: center;
+  height: auto;
+}
+
+.stats-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 Columns */
+  gap: 20px;
+}
+
+.stat-item h2 {
+  font-size: 48px;
+  font-weight: 800;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stat-item p {
+  font-size: 18px;
+  color: #a5c5d9; /* Light Blue/Gray label color */
+  margin-top: 10px;
+  font-weight: 400;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+/* WHY CHOOSE US SECTION */
+.why {
+  padding: 70px 0;
+  background: #ffffff;
+}
+
+.why-container {
+  max-width: 1200px;
+  margin: auto;
+  padding-right:40px;
+  display: flex;
+  align-items: center;
+  gap: 60px; /* Space between image and text */
+}
+
+/* Left Image Section */
+.why-image {
+  flex: 1;
+  
+}
+
+.why-image img {
+  width: 100%;
+  border-radius: 20px; /* Matching the rounded corners in the image */
+  display: block;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Right Content Section */
+.why-content {
+  flex: 1;
+}
+
+.why-content span {
+  color: #0091d1; /* SeaKnots Blue */
+  font-weight: 700;
+  font-size: 18px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.why-content h2 {
+  font-size: 34px;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+
+.why-content p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+/*CERTIFICATIONS */
+.certificates {
+  padding: 60px 0;
+  background-color:#f9f9f9;
+  text-align: center;
+  overflow: hidden;
+}
+
+.certificates h2 {
+  font-family: 'Arial', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.cert-slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 100%;
+}
+
+.cert-viewport {
+  width: 100%; 
+  max-width: 1000px;
+  overflow: hidden; /* This hides the 4th image until it slides in */
+  margin: 0 auto;
+}
+
+.cert-wrapper {
+  display: flex;
+  align-items: center;
+  /* We start shifted because of the clone at index 0 */
+  transform: translateX(-33.33%); 
+}
+
+.cert-item {
+  flex: 0 0 33.33%; /* Exactly 1/3 of the container width */
+  padding: 0 15px;
+  box-sizing: border-box;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0.3;
+  transform: scale(0.8);
+}
+
+.cert-item.active {
+  opacity: 1;
+  transform: scale(1.1);
+  z-index: 5;
+}
+
+.cert-item img {
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+  object-fit: contain;
+  background: #fff;
+}
+
+/* Arrows */
+.nav-arrow {
+  background: transparent;
+  border: none;
+  font-size: 40px;
+  color: #007bff;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0 30px;
+}
+
+/* Dots */
+.slider-dots {
+  margin-top: 30px;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #333;
+}
+/* FOOTER SECTION */
+.footer {
+  background: #001f3f; /* Deep Navy Blue from image */
+  color: #ffffff;
+  padding: 80px 20px 30px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 1fr 1.2fr; /* Proportional columns */
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+/* Column Headers */
+.footer-col h3 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+/* The small underline under headers */
+.footer-col h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 40px;
+  height: 2px;
+  background: #ffffff;
+}
+
+/* Column Text & Links */
+.footer-col p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 15px;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.footer-col ul li a:hover {
+  opacity: 0.7;
+}
+
+/* Contact Info with Bronze Icons */
+.footer-contact-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.footer-contact-item svg {
+  width: 20px;
+  height: 20px;
+  fill: #bc6d25; /* The exact bronze/orange color for icons */
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* Social Media Buttons */
+.social-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.social-btn {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 18px;
+  transition: transform 0.3s;
+}
+
+.social-btn:hover {
+  transform: translateY(-3px);
+}
+
+.facebook { background: #3b5998; }
+.instagram { background: #e4405f; }
+.linkedin { background: #0077b5; }
+
+/* Bottom Copyright */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 30px;
+  text-align: center;
+  font-size: 15px;
+}
+</style>
+<body>
+<div class="top-bar">
+  <div class="top-bar-container">
+
+    <div class="top-contact">
+      <a href="tel:+919500003171" class="contact-link">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <span>+91 95000 03171</span>
+      </a>
+
+      <div class="separator"></div>
+
+      <a href="mailto:sales@seaknots.in" class="contact-link">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <span>sales@seaknots.in</span>
+      </a>
+    </div>
+
+    <button class="top-right-btn" title="View Dashboard">
+      <svg viewBox="0 0 24 24"><path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/></svg>
+    </button>
+
+  </div>
+</div>
+  <header class="navbar">
+  <div class="nav-wrapper">
+
+    <div class="nav-left">
+      <img src="About/logo-1-e1708003097385-300x65.png" alt="SeaKnots" />
+    </div>
+
+    <nav class="nav-right">
+      <ul class="menu">
+        <li><a href="#" >Home</a></li>
+        <li><a href="#" class="active">About Us</a></li>
+        
+        <li>
+          <a href="#" class="has-dropdown">ISO Tank Management</a>
+          <ul class="dropdown">
+            <li><a href="#">Tank Container Operators</a></li>
+            <li><a href="#">Tank Container Agency</a></li>
+            <li><a href="#">Tank Container Leasing</a></li>
+            <li><a href="#">Tank Container Depot</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" class="has-dropdown">Other Products and Services</a>
+          <ul class="dropdown">
+            <li><a href="#">NVOCC Software</a></li>
+            <li><a href="#">Fleet Management System</a></li>
+            <li><a href="#">Freight Forwarding Solution</a></li>
+            <li><a href="#">Container Tracking</a></li>
+            <li><a href="#">Container Depot</a></li>
+            <li><a href="#">Leasing and Trading</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#">Blogs</a></li>
+        <li><a href="#">NewsLetter</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+<!-- ABOUT SECTION -->
+ <section class="about-hero">
+  <div class="container">
+    <h1>About Us</h1>
+  </div>
+</section>
+<!-- OVERVIEWSECTION -->
+ <section class="overview">
+  <div class="container overview-wrapper">
+
+    <div class="overview-image">
+      <div class="image-caption-bar">Olympia Tech Park, Guindy</div>
+      <img src="About/tech-park-chennai.jpg" alt="Olympia Tech Park">
+    </div>
+
+    <div class="overview-text">
+      <h2>Overview</h2>
+      <p>
+        With globalization at its peak, the tank container operations industry plays a 
+        pivotal role in the global transportation of liquid goods, offering a safe and 
+        efficient method for shipping various chemicals, food products, and other liquids.
+      </p>
+      <p>
+       However, the industry is filled with complexities like diverse container types, stringent regulations, and the need for streamlined logistics. That’s where SeaKnots fills the gaps. With our custom tank container solutions, we help container businesses overcome inefficiencies, ensuring precise container management, compliance with regulations, and enhanced overall operational efficiency.
+      </p>
+    </div>
+
+  </div>
+</section>
+<!-- OUR CAPABILITIES -->
+ <section class="capabilities">
+  <div class="container">
+    <h2>Our Capabilities</h2>
+
+    <div class="capabilities-grid">
+
+      <div class="cap-card">
+        <div class="card-image">
+          <img src="About/tank-depots-e17148127835441_1.png" alt="Tank Container Depots">
+        </div>
+        <div class="cap-content">
+          <h3>Tank Container Depots</h3>
+          <p>
+We design ISO tank container management solution here web based depot management systems to help you handle key operations of container depots. This includes gate moves, container survey and repair management. Software solution will help to make depot operations more efficient and covers various aspects like washing, pre-trip inspection, tracking, billing, enhancing reporting etc. 
+          </p>
+        </div>
+      </div>
+
+      <div class="cap-card">
+        <div class="card-image">
+          <img src="About/nvocc-software2.jpg" alt="NVOCC Software">
+        </div>
+        <div class="cap-content">
+          <h3>NVOCC Software</h3>
+          <p>
+SeaKnots also designs software to fulfill the needs of Non-Vessel Operating Common Carriers (NVOCC) with global operations. It’s tested for real time challenges in NVOCC operations and includes features like tariff management, equipment control, vendor contracts etc.
+          </p>
+        </div>
+      </div>
+
+      <div class="cap-card">
+        <div class="card-image">
+          <img src="About/container-IT-solution3.jpg" alt="Container IT Solutions">
+        </div>
+        <div class="cap-content">
+          <h3>Container IT Solutions</h3>
+          <p>
+We also design full-fledged container lease management solutions to handle everything from operations, sales, and procurement of containers. Our software’s is equipped to handle leasing of hundreds of containers be it small, medium, or large.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- OUR CAPABILITIES -->
+<section class="core-values">
+  <div class="container values-wrapper">
+    
+    <div class="values-image">
+      <img src="About/core-values-1536x1536.jpg" alt="SeaKnots Core Values Wheel">
+    </div>
+
+    <div class="values-text">
+      <h2>Core Values</h2>
+      <p>
+        At SeaKnots, we have a set of core values that define our work. One of the very 
+        first core values is integrity; whatever we do we uphold the highest standards of 
+        honesty, transparency, and ethical conduct. We also follow a client-centric 
+        approach that prioritizes the needs and success of our clients. In fact, we strive 
+        to build lasting partnerships through attentive listening, understanding, and 
+        delivering solutions that exceed expectations. Last but not least, flexibility is at 
+        the core of our work. We embrace the dynamicity of this industry with a smile 
+        and respond to changing landscapes with an agile mindset.
+      </p>
+    </div>
+
+  </div>
+</section>
+<section class="stats-section">
+  <div class="stats-container">
+    
+    <div class="stat-item">
+      <h2><span class="counter" data-target="50">0</span>+</h2>
+      <p>Years of Expertise</p>
+    </div>
+
+    <div class="stat-item">
+      <h2><span class="counter" data-target="25">0</span>+</h2>
+      <p>Countries Covered</p>
+    </div>
+
+    <div class="stat-item">
+      <h2><span class="counter" data-target="20">0</span>+</h2>
+      <p>Customers Served</p>
+    </div>
+
+    <div class="stat-item">
+      <h2><span class="counter" data-target="100">0</span>%</h2>
+      <p>Satisfaction Rate</p>
+    </div>
+
+  </div>
+</section>
+<!-- WHY CHOOSE US -->
+<section class="why">
+  <div class="why-container">
+    
+    <div class="why-image">
+      <img src="About/why-choose-us1.jpg.png" alt="SeaKnots Logistics Truck">
+    </div>
+
+    <div class="why-content">
+      <span>Why Choose Us</span>
+      <h2>We Provide Tank Container Solutions for your Success</h2>
+      
+      <p>
+Seaknots is a global technology solutions provider to international and domestic tank container operators, tank NVOCC agencies, tank container leasing companies, and tank container depots. Since 2018, we’ve built a proven track record of success, fostering long-term relationships. One thing that separates us from the rest is understanding of the tank container industry. When you work with us, be assured that our team will guide you all the way because we are not just a vendor, but a reliable partner invested in your success
+      </p>
+    </div>
+</section>
+<!-- CERTIFICATIONS -->
+ <section class="certificates">
+  <div class="container">
+    <h2>Our Certifications</h2>
+
+    <div class="cert-slider-container">
+      <button class="nav-arrow arrow-left" onclick="moveSlide(-1)">&lt;</button>
+
+      <div class="cert-viewport">
+        <div class="cert-wrapper" id="certWrapper">
+          <div class="cert-item clone"><img src="About/WhatsApp-Image-2024-04-08-at-5.08.55-AM-768x572_2.jpeg"></div>
+          
+          <div class="cert-item" data-index="0"><img src="About/WhatsApp-Image-2024-04-08-at-5.08.54-AM-768x1019 (1).jpeg"></div>
+          <div class="cert-item" data-index="1"><img src="About/Recognition-768x543.jpg"></div>
+          <div class="cert-item" data-index="2"><img src="About/Registration-768x1086.jpg"></div>
+          <div class="cert-item" data-index="3"><img src="About/WhatsApp-Image-2024-04-08-at-5.08.55-AM-768x572_2.jpeg"></div>
+
+          <div class="cert-item clone"><img src="WhatsApp-Image-2024-04-08-at-5.08.54-AM-768x1019 (1).jpeg"></div>
+        </div>
+      </div>
+
+      <button class="nav-arrow arrow-right" onclick="moveSlide(1)">&gt;</button>
+    </div>
+
+    <div class="slider-dots" id="dotsContainer">
+      <span class="dot active" onclick="jumpToSlide(1)"></span>
+      <span class="dot" onclick="jumpToSlide(2)"></span>
+      <span class="dot" onclick="jumpToSlide(3)"></span>
+      <span class="dot" onclick="jumpToSlide(4)"></span>
+    </div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+
+      <div class="footer-col">
+        <img src="About/logo-1-e1708003097385-300x65.png" alt="SeaKnots" style="height: 50px; margin-bottom: 20px;">
+        <p>
+          With globalization at its peak, the tank container operations industry plays a pivotal role in the global transportation of liquid goods, offering a safe and efficient method for shipping various chemicals, food products, and other liquids.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Solutions</h3>
+        <ul>
+          <li><a href="#">ISO Tank Container Software</a></li>
+          <li><a href="#">ISO Tank Management Solution</a></li>
+          <li><a href="#">Container Tracking</a></li>
+          <li><a href="#">NVOCC Software</a></li>
+          <li><a href="#">FLEET Management System</a></li>
+          <li><a href="#">Freight Forwarding Software</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Get In Touch</h3>
+        
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <p>Corporate Office Olympia Tech Park, Level 5, Fortius Block, Plot No. 1, Guindy, Chennai, Tamil Nadu 600032</p>
+        </div>
+
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          <p>+91 95000 03171</p>
+        </div>
+
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <p>vaidehi@seaknotsit.com</p>
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="social-btn facebook">f</a>
+          <a href="#" class="social-btn instagram">ig</a>
+          <a href="#" class="social-btn linkedin">in</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      Copyright © 2026 Seaknots IT
+    </div>
+  </div>
+</footer>
+<script>
+  // Function for Stats Section
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counter = entry.target;
+        const target = +counter.getAttribute('data-target'); // Get the number from HTML
+        const duration = 2000; // 2 seconds
+        let startTime = null;
+
+        function updateCount(timestamp) {
+          if (!startTime) startTime = timestamp;
+          const progress = Math.min((timestamp - startTime) / duration, 1);
+          counter.innerText = Math.floor(progress * target);
+
+          if (progress < 1) {
+            window.requestAnimationFrame(updateCount);
+          } else {
+            counter.innerText = target;
+          }
+        }
+
+        window.requestAnimationFrame(updateCount);
+        counterObserver.unobserve(counter); // Run only once
+      }
+    });
+  }, { threshold: 0.5 });
+
+  // Start observing all counter spans
+  document.querySelectorAll('.counter').forEach(count => {
+    counterObserver.observe(count);
+  });
+  // Function for Stats Section
+ const wrapper = document.getElementById('certWrapper');
+const items = document.querySelectorAll('.cert-item');
+const dots = document.querySelectorAll('.dot');
+let currentIndex = 2; // Start at 2 so the "First Real Image" is in the center
+let isTransitioning = false;
+
+function updateSlider(smooth = true) {
+    if (smooth) {
+        wrapper.style.transition = "transform 0.5s ease-in-out";
+    } else {
+        wrapper.style.transition = "none";
+    }
+
+    /* CHANGE: Subtracting 1 from currentIndex shifts the row 
+       so the 'active' item moves from the left to the center.
+    */
+    const offset = -(currentIndex - 1) * 33.33;
+    wrapper.style.transform = `translateX(${offset}%)`;
+
+    // Highlight Active (The one in the middle)
+    items.forEach((item, index) => {
+        item.classList.toggle('active', index === currentIndex);
+    });
+
+    // Update Dots (Mapping index to dots 0-3)
+    let dotIndex = currentIndex - 1;
+    if (currentIndex === 0) dotIndex = 3; 
+    if (currentIndex === 5) dotIndex = 0;
+
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === dotIndex);
+    });
+}
+
+function moveSlide(direction) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    currentIndex += direction;
+    updateSlider();
+}
+
+// Handle the "Infinite" Snap
+wrapper.addEventListener('transitionend', () => {
+    isTransitioning = false;
+    
+    // Snap logic for middle-alignment
+    if (currentIndex === 0) {
+        currentIndex = 4; // Jump to the real 4th image
+        updateSlider(false);
+    }
+    if (currentIndex === 5) {
+        currentIndex = 1; // Jump to the real 1st image
+        updateSlider(false);
+    }
+});
+
+function jumpToSlide(index) {
+    if (isTransitioning) return;
+    currentIndex = index;
+    updateSlider();
+}
+
+// Initial Call
+updateSlider(false);
+</script>  
+</body>
+</html>

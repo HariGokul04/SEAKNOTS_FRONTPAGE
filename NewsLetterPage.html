@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsletter</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* TOP HEADER */
+.top-bar {
+  /* Dark navy background with a subtle pattern overlay */
+  background: linear-gradient(rgba(26, 32, 44, 0.95), rgba(26, 32, 44, 0.95)),
+              url('https://www.transparenttextures.com/patterns/carbon-fibre.png'); 
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  height: 50px;
+}
+
+.top-bar-container {
+  max-width: 1400px;
+  margin: auto;
+  padding: 10 40px;
+  display: flex;
+  justify-content: center; /* Centers the contact info */
+  align-items: center;
+  position: relative;
+}
+
+/* CENTER CONTACT INFO */
+.top-contact {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-right: 900px;
+  
+
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.contact-link:hover {
+  opacity: 0.8;
+}
+
+.contact-link svg {
+  width: 16px;
+  height: 16px;
+  fill: #fff; /* Icons are white in the top bar */
+}
+
+/* THE VERTICAL DIVIDER | */
+.separator {
+  width: 1px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 0 5px;
+}
+
+/* RIGHT BUTTON LOGO */
+.top-right-btn {
+  position: absolute;
+  right: 40px;
+  width: 35px;
+  height: 35px;
+  background: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s;
+  margin-top: 15px;
+}
+
+.top-right-btn:hover {
+  transform: scale(1.05);
+}
+
+.top-right-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: #0091d1; /* The icon inside the button is blue */
+}
+
+  /* NAVBAR CONTAINER */
+  .navbar {
+    width: 100%;
+    background: #fff;
+    padding: 10px 0;
+    border-bottom: 1px solid #f8f8f8;
+    position: relative;
+    z-index: 1000;
+  }
+
+  .nav-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* LOGO SECTION */
+  .nav-left img {
+    height: 50px;
+    display: block;
+  }
+
+  /* MENU SECTION */
+  .menu {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Parent LI must be relative so dropdown aligns to it */
+  .menu > li {
+    position: relative;
+    padding: 15px 18px;
+  }
+
+  .menu a {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 15px;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+  }
+
+  .menu a.active {
+    color: #0091d1;
+  }
+
+  .menu a:hover {
+    color: #0091d1;
+  }
+
+  /* DROPDOWN ARROW */
+  .has-dropdown::after {
+    content: ' \2304';
+    font-size: 16px;
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: bold;
+    margin-bottom: 9px;
+  }
+
+  /* DROPDOWN MENU - Hidden by default */
+  .dropdown {
+    position: absolute;
+    top: 100%; /* Sits exactly below the parent li */
+    left: 0;
+    background: #ffffff;
+    min-width: 240px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 1px solid #eeeeee;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    transform: translateY(10px);
+  }
+
+  /* SHOW DROPDOWN ON HOVER */
+  .menu li:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* DROPDOWN ITEMS */
+  .dropdown li {
+    border-bottom: 1px solid #f1f1f1;
+  }
+
+  .dropdown li:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown a {
+    padding: 12px 20px;
+    color: #444;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+
+  .dropdown a:hover {
+    background: #f9f9f9;
+    color: #0091d1;
+  }
+
+ /* Layout Grid */
+.blog-container {
+  max-width: 1400px; /* Increased from 1200px to give you that wider feel */
+  margin: 40px auto;
+  padding: 0 20px;
+  overflow-x: hidden; /* Safety net to prevent horizontal scroll */
+}
+
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  width: 100%; /* Changed from 120% to 100% to remove scrollbar */
+}
+
+/* Article Styling */
+.main-content {
+  background: #fff;
+}
+
+.dashboard-preview img {
+  width: 90%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.blog-body h1 {
+  font-size: 40px;
+  line-height: 1.5;
+  font-weight: 1000;
+  color: #222;
+    margin-bottom: 20px;
+}
+
+.feature-list { 
+  list-style: none; 
+  padding: 0; 
+}
+
+.feature-list li { 
+  margin: 15px 0; 
+  font-weight: 500; 
+  font-size: 18px; 
+}
+
+/* Sidebar Widget Style */
+.sidebar-widget {
+  background: #fff;
+  padding: 25px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  border: 4px solid #b18e63; /* Tan border */
+  width: 80%;
+}
+
+.sidebar-widget h3 {
+  color: #a67c52; 
+  font-size: 28px;
+  font-weight: normal;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #a67c52;
+  padding-bottom: 10px;
+  display: block;
+}
+
+/* Form Styles */
+.demo-form form { display: flex; flex-direction: column; }
+
+.demo-form input {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #d3d3d3;
+  box-sizing: border-box;
+  color: #666;
+  outline: none;
+}
+
+.demo-form input[type="text"] { 
+  border-bottom: none; /* Stacked look */
+}
+
+.demo-form button {
+  align-self: flex-start;
+  margin-top: 30px;
+  padding: 10px 45px;
+  background: white;
+  border: 2px solid #008cc9;
+  color: #008cc9;
+  border-radius: 50px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.demo-form button:hover { background: #f0f8ff; }
+
+/* Recent Posts Styles */
+.recent-posts ul { list-style: none; padding: 0; }
+
+.recent-posts li { 
+  padding: 20px 0; 
+  border-bottom: 1px solid #f0f0f0; 
+}
+
+.recent-posts li:last-child { border-bottom: none; }
+
+.recent-posts li a {
+  text-decoration: none;
+  color: #008cc9;
+  font-size: 19px;
+  line-height: 1.4;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.recent-posts .post-date {
+  display: block;
+  font-style: italic;
+  color: #a67c52;
+  font-size: 16px;
+}
+
+/* Responsive Handling */
+@media (max-width: 992px) {
+  .content-wrapper { 
+    grid-template-columns: 1fr; 
+    width: 100%; 
+  }
+}
+/* --- COMPACT CENTERED COMMENT SECTION --- */
+
+.comment-section {
+  /* This makes the box smaller and centers it */
+  max-width: 650px;  
+  margin-left: 10%;         /* Reduced from 850px for a compact look */
+  margin-right: 0%;          /* Centers the box horizontally */
+  padding: 30px;              /* Reduced internal padding */  /* Sharp black border from image */
+  background-color: #ffffff;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+.comment-section h2 {
+  font-size: 30px;            /* Smaller heading */
+  color: #1a1a1a;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+}
+
+/* Compact field styles */
+.comment-form textarea,
+.comment-form input[type="text"],
+.comment-form input[type="email"] {
+  width: 100%;
+  padding: 12px 10px;         /* Tighter padding inside inputs */
+  border: 1px solid #d3d3d3;
+  font-size: 14px;            /* Slightly smaller text */
+  color: #333;
+  outline: none;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  margin-bottom: 15px;        /* Reduced spacing between fields */
+}
+
+/* Specific Gray-style for Website field */
+.website-group input {
+  width: 40% !important;      /* Smaller width for the compact look */
+  background-color: #f9f9f9 !important;
+  border: 1px solid #eeeeee !important;
+}
+
+/* Checkbox and Label alignment */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 0 25px 0;
+}
+
+.checkbox-group label {
+  font-size: 13px;            /* Compact label text */
+  color: #444;
+  line-height: 1.2;
+}
+
+/* Pill-shaped Button */
+.btn-post {
+  padding: 10px 30px;         /* Smaller button */
+  background-color: #ffffff;
+  border: 2px solid #0093d0;
+  color: #0093d0;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-post:hover {
+  background-color: #0093d0;
+  color: #ffffff;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+  .comment-section {
+    max-width: 90%;
+    padding: 20px;
+  }
+}
+/* FOOTER SECTION */
+.footer {
+  background: #001f3f; /* Deep Navy Blue from image */
+  color: #ffffff;
+  padding: 80px 20px 30px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 1fr 1.2fr; /* Proportional columns */
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+/* Column Headers */
+.footer-col h3 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+/* The small underline under headers */
+.footer-col h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 40px;
+  height: 2px;
+  background: #ffffff;
+}
+
+/* Column Text & Links */
+.footer-col p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 15px;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.footer-col ul li a:hover {
+  opacity: 0.7;
+}
+
+/* Contact Info with Bronze Icons */
+.footer-contact-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.footer-contact-item svg {
+  width: 20px;
+  height: 20px;
+  fill: #bc6d25; /* The exact bronze/orange color for icons */
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* Social Media Buttons */
+.social-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.social-btn {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 18px;
+  transition: transform 0.3s;
+}
+
+.social-btn:hover {
+  transform: translateY(-3px);
+}
+
+.facebook { background: #3b5998; }
+.instagram { background: #e4405f; }
+.linkedin { background: #0077b5; }
+
+/* Bottom Copyright */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 30px;
+  text-align: center;
+  font-size: 15px;
+}
+</style>
+</head>
+<body>
+    <div class="top-bar">
+  <div class="top-bar-container">
+
+    <div class="top-contact">
+      <a href="tel:+919500003171" class="contact-link">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <span>+91 95000 03171</span>
+      </a>
+
+      <div class="separator"></div>
+
+      <a href="mailto:sales@seaknots.in" class="contact-link">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <span>sales@seaknots.in</span>
+      </a>
+    </div>
+
+    <button class="top-right-btn" title="View Dashboard">
+      <svg viewBox="0 0 24 24"><path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/></svg>
+    </button>
+
+  </div>
+</div>
+  <header class="navbar">
+  <div class="nav-wrapper">
+
+    <div class="nav-left">
+      <img src="NewsLetter/logo-1-e1708003097385-300x65.png" alt="SeaKnots" />
+    </div>
+
+    <nav class="nav-right">
+      <ul class="menu">
+        <li><a href="#" >Home</a></li>
+        <li><a href="#" >About Us</a></li>
+        
+        <li>
+          <a href="#" class="has-dropdown">ISO Tank Management</a>
+          <ul class="dropdown">
+            <li><a href="#">Tank Container Operators</a></li>
+            <li><a href="#">Tank Container Agency</a></li>
+            <li><a href="#">Tank Container Leasing</a></li>
+            <li><a href="#">Tank Container Depot</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" class="has-dropdown">Other Products and Services</a>
+          <ul class="dropdown">
+            <li><a href="#">NVOCC Software</a></li>
+            <li><a href="#">Fleet Management System</a></li>
+            <li><a href="#">Freight Forwarding Solution</a></li>
+            <li><a href="#">Container Tracking</a></li>
+            <li><a href="#">Container Depot</a></li>
+            <li><a href="#">Leasing and Trading</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#" >Blogs</a></li>
+        <li><a href="#" class="active">NewsLetter</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<!-- MAIN CONTENT AREA -->
+<main class="blog-container">
+  <div class="content-wrapper">
+    
+    <div class="main-content">
+      <article class="blog-body">        
+        <div class="dashboard-preview">
+           <h1>🚢 The Hidden Cost of Idle ISO Tanks</h1> 
+           <img src="Newsletter/50292e72-f949-467d-8a1b-0e978f014b1a.png" alt="Tank Idle Overview Dashboard">
+        </div>
+
+        <h2>At SeaKnots IT Solutions, we are committed to delivering smarter and more efficient solutions for ISO tank management. Up to 10–15% of ISO tanks remain idle at any given time—not because they’re unavailable, but due to lack of real-time visibility.</h2>
+        <br>   
+
+        <h3>With SeaKnots Idle Tank Feature, you can:</h3> 
+        <ul class="feature-list">
+          <li>🔍 Track idle tanks in real-time</li>
+          <li>📊 Analyze depot-wise costs</li>
+          <li>⚡ Make faster, data-driven decisions</li>
+        </ul>
+      </article>
+    </div>
+
+    <aside class="sidebar">
+      <div class="sidebar-widget demo-form">
+        <h3>Book Free Demo</h3>
+        <form>
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Email" required>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <div class="sidebar-widget recent-posts">
+        <h3>Recent Posts</h3>
+        <ul>
+          <li>
+            <a href="#">“Why manage ISO Tank Tests manually when you can automate?”</a>
+            <span class="post-date">March 27, 2026</span>
+          </li>
+          <li>
+            <a href="#" class="active">🚢 The Hidden Cost of Idle ISO Tanks</a>
+            <span class="post-date">March 19, 2026</span>
+          </li>
+          <li>
+            <a href="#">How Container Tracking Improves Coordination between Depots and Carriers</a>
+            <span class="post-date">February 27, 2026</span>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+</main>
+<!-- COMMENT -->
+ <section class="comment-section">
+  <div class="container">
+    <h2>Leave a Comment</h2>
+
+    <form class="comment-form">
+      <div class="form-group">
+        <textarea rows="8" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <input type="text" placeholder="Name *" required>
+      </div>
+
+      <div class="form-group">
+        <input type="email" placeholder="Email *" required>
+      </div>
+
+      <div class="form-group website-group">
+        <input type="text" placeholder="Website">
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="save-data">
+        <label for="save-data">Save my name, email, and website in this browser for the next time I comment.</label>
+      </div>
+
+      <div class="button-group">
+        <button type="submit" class="btn-post">Post Comment</button>
+      </div>
+    </form>
+  </div>
+</section>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+
+      <div class="footer-col">
+        <img src="NewsLetter/logo-1-e1708003097385-300x65.png" alt="SeaKnots" style="height: 50px; margin-bottom: 20px;">
+        <p>
+          With globalization at its peak, the tank container operations industry plays a pivotal role in the global transportation of liquid goods, offering a safe and efficient method for shipping various chemicals, food products, and other liquids.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Solutions</h3>
+        <ul>
+          <li><a href="#">ISO Tank Container Software</a></li>
+          <li><a href="#">ISO Tank Management Solution</a></li>
+          <li><a href="#">Container Tracking</a></li>
+          <li><a href="#">NVOCC Software</a></li>
+          <li><a href="#">FLEET Management System</a></li>
+          <li><a href="#">Freight Forwarding Software</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Get In Touch</h3>
+        
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <p>Corporate Office Olympia Tech Park, Level 5, Fortius Block, Plot No. 1, Guindy, Chennai, Tamil Nadu 600032</p>
+        </div>
+
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          <p>+91 95000 03171</p>
+        </div>
+
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <p>vaidehi@seaknotsit.com</p>
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="social-btn facebook">f</a>
+          <a href="#" class="social-btn instagram">ig</a>
+          <a href="#" class="social-btn linkedin">in</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      Copyright © 2026 Seaknots IT
+    </div>
+  </div>
+</footer>
+</body>
+</html>

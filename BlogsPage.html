@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogs</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* TOP HEADER */
+.top-bar {
+  /* Dark navy background with a subtle pattern overlay */
+  background: linear-gradient(rgba(26, 32, 44, 0.95), rgba(26, 32, 44, 0.95)),
+              url('https://www.transparenttextures.com/patterns/carbon-fibre.png'); 
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  height: 50px;
+}
+
+.top-bar-container {
+  max-width: 1400px;
+  margin: auto;
+  padding: 10 40px;
+  display: flex;
+  justify-content: center; /* Centers the contact info */
+  align-items: center;
+  position: relative;
+}
+
+/* CENTER CONTACT INFO */
+.top-contact {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-right: 900px;
+  
+
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.contact-link:hover {
+  opacity: 0.8;
+}
+
+.contact-link svg {
+  width: 16px;
+  height: 16px;
+  fill: #fff; /* Icons are white in the top bar */
+}
+
+/* THE VERTICAL DIVIDER | */
+.separator {
+  width: 1px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 0 5px;
+}
+
+/* RIGHT BUTTON LOGO */
+.top-right-btn {
+  position: absolute;
+  right: 40px;
+  width: 35px;
+  height: 35px;
+  background: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s;
+  margin-top: 15px;
+}
+
+.top-right-btn:hover {
+  transform: scale(1.05);
+}
+
+.top-right-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: #0091d1; /* The icon inside the button is blue */
+}
+
+  /* NAVBAR CONTAINER */
+  .navbar {
+    width: 100%;
+    background: #fff;
+    padding: 10px 0;
+    border-bottom: 1px solid #f8f8f8;
+    position: relative;
+    z-index: 1000;
+  }
+
+  .nav-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* LOGO SECTION */
+  .nav-left img {
+    height: 50px;
+    display: block;
+  }
+
+  /* MENU SECTION */
+  .menu {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Parent LI must be relative so dropdown aligns to it */
+  .menu > li {
+    position: relative;
+    padding: 15px 18px;
+  }
+
+  .menu a {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 15px;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+  }
+
+  .menu a.active {
+    color: #0091d1;
+  }
+
+  .menu a:hover {
+    color: #0091d1;
+  }
+
+  /* DROPDOWN ARROW */
+  .has-dropdown::after {
+    content: ' \2304';
+    font-size: 16px;
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: bold;
+    margin-bottom: 9px;
+  }
+
+  /* DROPDOWN MENU - Hidden by default */
+  .dropdown {
+    position: absolute;
+    top: 100%; /* Sits exactly below the parent li */
+    left: 0;
+    background: #ffffff;
+    min-width: 240px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 1px solid #eeeeee;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    transform: translateY(10px);
+  }
+
+  /* SHOW DROPDOWN ON HOVER */
+  .menu li:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* DROPDOWN ITEMS */
+  .dropdown li {
+    border-bottom: 1px solid #f1f1f1;
+  }
+
+  .dropdown li:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown a {
+    padding: 12px 20px;
+    color: #444;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+
+  .dropdown a:hover {
+    background: #f9f9f9;
+    color: #0091d1;
+  }
+  /*Aboyt us*/
+
+  .about-hero {
+  /* Replace 'your-image-path.jpg' with your actual image URL */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              url('Blogs/why-choose-us.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 120px 0; /* Adjust height to match the image scale */
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+.about-hero .container {
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-hero h1 {
+  font-family: 'Arial', sans-serif; /* Use a bold sans-serif */
+  font-size: 40px;
+  font-weight: 800;
+  margin: 0;
+  text-align: left; /* Image shows left-aligned text */
+  letter-spacing: -1px;
+}
+/* BLOGS LISTING */
+.blogs-list {
+  padding: 60px 20px;
+  background-color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.blogs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+/* Card Styling */
+.blog-card {
+  background: #fff;
+  border: 1px solid #0091d5; /* The specific light blue border */
+  border-radius: 15px; /* High rounding as seen in image */
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.blog-img-container {
+  padding: 10px; /* Internal spacing for the image border effect */
+}
+
+.blog-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px; /* Image itself is also rounded */
+  border: 1px solid #ddd;
+}
+
+.blog-content {
+  padding: 0 20px 25px 20px;
+  text-align: left;
+}
+
+.blog-title {
+  font-size: 18px;
+  color: #0076a8; /* Darker blue for titles */
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 15px 0 10px 0;
+  min-height: 50px;
+}
+
+.blog-date {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.calendar-icon {
+  font-size: 14px;
+}
+
+
+
+.read-more {
+  color: #0091d5;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+/* Pagination Styling */
+.pagination {
+  text-align: center;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.page-numbers {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+
+.page-numbers.current {
+  color: #0091d1; /* Orange color for active page as in image */
+  font-weight: bold;
+  border-bottom: 2px solid  #0091d1;
+}
+
+.next-page {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Mobile Responsive */
+@media (max-width: 992px) {
+  .blogs-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .blogs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* FOOTER SECTION */
+.footer {
+  background: #001f3f; /* Deep Navy Blue from image */
+  color: #ffffff;
+  padding: 80px 20px 30px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 1fr 1.2fr; /* Proportional columns */
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+/* Column Headers */
+.footer-col h3 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+/* The small underline under headers */
+.footer-col h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 40px;
+  height: 2px;
+  background: #ffffff;
+}
+
+/* Column Text & Links */
+.footer-col p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 15px;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.footer-col ul li a:hover {
+  opacity: 0.7;
+}
+
+/* Contact Info with Bronze Icons */
+.footer-contact-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.footer-contact-item svg {
+  width: 20px;
+  height: 20px;
+  fill: #bc6d25; /* The exact bronze/orange color for icons */
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* Social Media Buttons */
+.social-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.social-btn {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 18px;
+  transition: transform 0.3s;
+}
+
+.social-btn:hover {
+  transform: translateY(-3px);
+}
+
+.facebook { background: #3b5998; }
+.instagram { background: #e4405f; }
+.linkedin { background: #0077b5; }
+
+/* Bottom Copyright */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 30px;
+  text-align: center;
+  font-size: 15px;
+}
+ </style>
+ </head>
+ <body>
+    <div class="top-bar">
+  <div class="top-bar-container">
+
+    <div class="top-contact">
+      <a href="tel:+919500003171" class="contact-link">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <span>+91 95000 03171</span>
+      </a>
+
+      <div class="separator"></div>
+
+      <a href="mailto:sales@seaknots.in" class="contact-link">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <span>sales@seaknots.in</span>
+      </a>
+    </div>
+
+    <button class="top-right-btn" title="View Dashboard">
+      <svg viewBox="0 0 24 24"><path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/></svg>
+    </button>
+
+  </div>
+</div>
+  <header class="navbar">
+  <div class="nav-wrapper">
+
+    <div class="nav-left">
+      <img src="Blogs/logo-1-e1708003097385-300x65.png" alt="SeaKnots" />
+    </div>
+
+    <nav class="nav-right">
+      <ul class="menu">
+        <li><a href="#" >Home</a></li>
+        <li><a href="#" >About Us</a></li>
+        
+        <li>
+          <a href="#" class="has-dropdown">ISO Tank Management</a>
+          <ul class="dropdown">
+            <li><a href="#">Tank Container Operators</a></li>
+            <li><a href="#">Tank Container Agency</a></li>
+            <li><a href="#">Tank Container Leasing</a></li>
+            <li><a href="#">Tank Container Depot</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" class="has-dropdown">Other Products and Services</a>
+          <ul class="dropdown">
+            <li><a href="#">NVOCC Software</a></li>
+            <li><a href="#">Fleet Management System</a></li>
+            <li><a href="#">Freight Forwarding Solution</a></li>
+            <li><a href="#">Container Tracking</a></li>
+            <li><a href="#">Container Depot</a></li>
+            <li><a href="#">Leasing and Trading</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#" class="active">Blogs</a></li>
+        <li><a href="#">NewsLetter</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+<!-- ABOUT SECTION -->
+ <section class="about-hero">
+  <div class="container">
+    <h1>ISO Tank Container Blog Insights</h1>
+  </div>
+</section>
+<!-- Blogs -->
+ 
+
+<section class="blogs-list">
+  <div class="container">
+
+    
+    <div class="blogs-grid">
+<div class="blog-card" data-page="1">
+
+  <div class="blog-img-container">
+    <img src="Blogs/baeb0e2c-08ed-4471-9894-ad7fc95f8537.jpg" alt="Why Manage ISO Tank Tests">
+  </div>
+
+  <div class="blog-content">
+
+    <h3 class="blog-title">
+      Why manage ISO Tank Tests manually when you can automate?
+    </h3>
+
+    <div class="blog-date">
+      <span class="calendar-icon">📅</span> March 27, 2026
+    </div>
+
+    <p class="blog-excerpt">
+      Never miss a tank test again. Managing ISO tank compliance becomes easy and efficient with automated solutions.
+    </p>
+
+    <a href="#" class="read-more">Read More »</a>
+
+  </div>
+
+</div>
+
+<div class="blog-card" data-page="1">
+
+  <div class="blog-img-container">
+    <img src="Blogs/hidden-Cost.png" alt="The Hidden Cost of Idle ISO Tanks">
+  </div>
+
+  <div class="blog-content">
+
+    <h3 class="blog-title">
+      The Hidden Cost of Idle ISO Tanks
+    </h3>
+
+    <div class="blog-date">
+      <span class="calendar-icon">📅</span> March 19, 2026
+    </div>
+
+    <p class="blog-excerpt">
+      At SeaKnots IT Solutions, we deliver smarter and more efficient logistics solutions to reduce idle tank costs.
+    </p>
+
+    <a href="#" class="read-more">Read More »</a>
+
+  </div>
+
+</div>
+
+      <div class="blog-card" data-page="1">
+
+  <div class="blog-img-container">
+    <img src="Blogs/How_Container.png" alt="Container Tracking">
+  </div>
+
+  <div class="blog-content">
+
+    <h3 class="blog-title">
+      How Container Tracking Improves Coordination between Depots and Carriers
+    </h3>
+
+    <div class="blog-date">
+      <span class="calendar-icon">📅</span> February 27, 2026
+    </div>
+
+    <p class="blog-excerpt">
+      In today’s fast-paced logistics ecosystem, coordination between depots and carriers plays a critical role in ensuring efficiency.
+    </p>
+
+    <a href="#" class="read-more">Read More »</a>
+
+  </div>
+
+</div>
+
+
+      
+
+           <div class="blog-card" data-page="1">
+
+  <div class="blog-img-container">
+    <img src="Blogs/freight-forwarding-challenges.png" alt="Freight Forwarding Challenges">
+  </div>
+
+  <div class="blog-content">
+
+    <h3 class="blog-title">
+      Freight Forwarding Challenges in 2026: How Seaknots Software Simplifies Operations
+    </h3>
+
+    <div class="blog-date">
+      <span class="calendar-icon">📅</span> January 28, 2026
+    </div>
+
+    <p class="blog-excerpt">
+      The global freight forwarding industry is evolving rapidly, and modern software solutions are key to overcoming operational challenges.
+    </p>
+
+    <a href="#" class="read-more">Read More »</a>
+
+  </div>
+
+</div>
+
+            <div class="blog-card" data-page="1">
+
+  <div class="blog-img-container">
+    <img src="Blogs/freight-forwarding-and-container-tracking.png" alt="Freight Forwarding and Container Tracking">
+  </div>
+
+  <div class="blog-content">
+
+    <h3 class="blog-title">
+      Top Features Every Freight Forwarding & Container Tracking Software Must Offer in 2026
+    </h3>
+
+    <div class="blog-date">
+      <span class="calendar-icon">📅</span> December 31, 2026
+    </div>
+
+    <p class="blog-excerpt">
+      Modern freight software must evolve to meet growing demands, offering real-time tracking and smarter logistics management.
+    </p>
+
+    <a href="#" class="read-more">Read More »</a>
+
+  </div>
+
+</div>
+
+     <div class="blog-card" data-page="1">
+
+  <div class="blog-img-container">
+    <img src="Blogs/freight-management-software.png" alt="Freight Management Software">
+  </div>
+
+  <div class="blog-content">
+
+    <h3 class="blog-title">
+      Freight Management Software vs. Manual Systems: Which is Better?
+    </h3>
+
+    <div class="blog-date">
+      <span class="calendar-icon">📅</span> December 2, 2026
+    </div>
+
+    <p class="blog-excerpt">
+      The logistics industry has evolved significantly, and choosing between manual systems and modern software is critical for efficiency.
+    </p>
+
+    <a href="#" class="read-more">Read More »</a>
+
+  </div>
+
+</div>
+      </div>
+
+<div class="pagination" id="pagination"></div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+
+      <div class="footer-col">
+        <img src="Blogs/logo-1-e1708003097385-300x65.png" alt="SeaKnots" style="height: 50px; margin-bottom: 20px;">
+        <p>
+          With globalization at its peak, the tank container operations industry plays a pivotal role in the global transportation of liquid goods, offering a safe and efficient method for shipping various chemicals, food products, and other liquids.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Solutions</h3>
+        <ul>
+          <li><a href="#">ISO Tank Container Software</a></li>
+          <li><a href="#">ISO Tank Management Solution</a></li>
+          <li><a href="#">Container Tracking</a></li>
+          <li><a href="#">NVOCC Software</a></li>
+          <li><a href="#">FLEET Management System</a></li>
+          <li><a href="#">Freight Forwarding Software</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Get In Touch</h3>
+        
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <p>Corporate Office Olympia Tech Park, Level 5, Fortius Block, Plot No. 1, Guindy, Chennai, Tamil Nadu 600032</p>
+        </div>
+
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          <p>+91 95000 03171</p>
+        </div>
+
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <p>vaidehi@seaknotsit.com</p>
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="social-btn facebook">f</a>
+          <a href="#" class="social-btn instagram">ig</a>
+          <a href="#" class="social-btn linkedin">in</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      Copyright © 2026 Seaknots IT
+    </div>
+  </div>
+</footer>
+<script>
+    /* Pagination Logic */
+let currentPage = 1;
+const totalPages = 5;
+
+function showPage(page, event) {
+  if (event) event.preventDefault();
+
+  currentPage = page;
+
+  const blogs = document.querySelectorAll(".blog-card");
+
+  blogs.forEach(blog => {
+    const blogPage = blog.getAttribute("data-page");
+
+    if (parseInt(blogPage) === page) {
+      blog.style.display = "block";
+    } else {
+      blog.style.display = "none";
+    }
+  });
+
+  updatePagination();
+
+  // Smooth scroll to top of blog section
+  document.querySelector(".blogs-list").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function updatePagination() {
+  const pagination = document.getElementById("pagination");
+  pagination.innerHTML = "";
+
+  // 🔹 Prev Button
+  if (currentPage > 1) {
+    pagination.innerHTML += `
+      <a href="#" class="next-page"
+         onclick="showPage(${currentPage - 1}, event)">« Prev</a>
+    `;
+  }
+
+  // 🔹 Page Numbers
+  for (let i = 1; i <= totalPages; i++) {
+    pagination.innerHTML += `
+      <a href="#"
+         class="page-numbers ${i === currentPage ? 'current' : ''}"
+         onclick="showPage(${i}, event)">
+         ${i}
+      </a>
+    `;
+  }
+
+  // 🔹 Next Button
+  if (currentPage < totalPages) {
+    pagination.innerHTML += `
+      <a href="#" class="next-page"
+         onclick="showPage(${currentPage + 1}, event)">Next »</a>
+    `;
+  }
+}
+
+// 🔹 Initial Load
+document.addEventListener("DOMContentLoaded", () => {
+  showPage(1);
+});
+
+</script>
+ </body>
+
+</html>
